@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Boat.GameObject.Building
+﻿namespace Boat.GameObject.Building
 {
-    class Port
+    class Port : GameObject, IDestructible
     {
+        public override GameObjectImage Image
+        {
+            get { return GameObjectImage.Port; }
+        }
     }
 }

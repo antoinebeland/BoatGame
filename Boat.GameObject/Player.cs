@@ -1,6 +1,6 @@
 ﻿namespace Boat.GameObject
 {
-    class Player
+    public class Player
     {
     }
 }

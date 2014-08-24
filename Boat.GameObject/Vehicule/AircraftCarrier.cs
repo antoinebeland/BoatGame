@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Boat.GameObject.Vehicule
+﻿namespace Boat.GameObject.Vehicule
 {
-    class AircraftCarrier
+    class AircraftCarrier : Boat
     {
+        public override GameObjectImage Image
+        {
+            get { return GameObjectImage.AircraftCarrier; }
+        }
     }
 }

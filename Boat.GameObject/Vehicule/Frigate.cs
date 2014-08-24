@@ -2,5 +2,9 @@
 {
     class Frigate : Boat
     {
+        public override GameObjectImage Image
+        {
+            get { return GameObjectImage.Frigate; }
+        }
     }
 }

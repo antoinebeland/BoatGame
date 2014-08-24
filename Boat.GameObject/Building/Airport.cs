@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Boat.GameObject.Building
+﻿namespace Boat.GameObject.Building
 {
-    class Airport
+    class Airport : GameObject, IDestructible
     {
+        public override GameObjectImage Image
+        {
+            get { throw new System.NotImplementedException(); }
+        }
     }
 }

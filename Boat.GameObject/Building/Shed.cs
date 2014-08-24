@@ -5,7 +5,11 @@ using System.Text;
 
 namespace Boat.GameObject.Building
 {
-    class Shed
+    class Shed : GameObject, IDestructible
     {
+        public override GameObjectImage Image
+        {
+            get { return GameObjectImage.Shed; }
+        }
     }
 }

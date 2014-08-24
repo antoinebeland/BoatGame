@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>a42cd644-6bd5-4501-ba6c-1eeb2262173f</ProjectGuid>
+    <ProjectGuid>{6B0D3465-DCE1-4C6C-A023-AFD094D4C774}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Boat.GameEngine</RootNamespace>
@@ -31,17 +31,75 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="SdlDotNet, Version=6.1.0.0, Culture=neutral, PublicKeyToken=26ad4f7e10c61408, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependency\SdlDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tao.Sdl, Version=1.2.13.0, Culture=neutral, PublicKeyToken=9c7a200e36c0094e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dependency\Tao.Sdl.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="GameObjectSprite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Boat.GameObject\Boat.GameObject.csproj">
+      <Project>{6C4C0109-F7A8-416F-94B7-7B937F47569E}</Project>
+      <Name>Boat.GameObject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Boat.Utilities\Boat.Utilities.csproj">
+      <Project>{C46FDB7A-B86C-41FF-8444-A3DBCABBC44E}</Project>
+      <Name>Boat.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AircraftCarrier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Battlecruiser.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Frigate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Headquarters.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PatrolBoat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Port.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Shed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TorpedoBoat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Warehouse.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

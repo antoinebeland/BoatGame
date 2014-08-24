@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Boat.GameEngine;
 
 namespace Boat.Console
 {
@@ -9,6 +6,8 @@ namespace Boat.Console
     {
         static void Main(string[] args)
         {
+            var gameManager = new GameManager();
+            gameManager.Initialize();
         }
     }
 }

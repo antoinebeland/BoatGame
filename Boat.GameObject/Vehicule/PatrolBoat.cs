@@ -2,5 +2,9 @@
 {
     class PatrolBoat : Boat
     {
+        public override GameObjectImage Image
+        {
+            get { return GameObjectImage.PatrolBoat;  }
+        }
     }
 }

@@ -1,6 +1,10 @@
 ﻿namespace Boat.GameObject.Vehicule
 {
-    class Battlecruiser : Boat
+    public class Battlecruiser : Boat
     {
+        public override GameObjectImage Image
+        {
+            get { return GameObjectImage.Battlecruiser;}
+        }
     }
 }
