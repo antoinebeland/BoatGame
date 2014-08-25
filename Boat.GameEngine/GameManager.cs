@@ -3,32 +3,38 @@ using System.Drawing;
 using Boat.GameObject.Vehicule;
 using SdlDotNet.Core;
 using SdlDotNet.Graphics;
-using SdlDotNet.Graphics.Sprites;
 
 namespace Boat.GameEngine
 {
     public class GameManager : IDisposable
     {
         private readonly Surface _video;
-        private readonly SpriteCollection _spriteCollection;
+        private readonly GameObjectSprite _gameObjectSprite1;
+        private readonly GameObjectSprite _gameObjectSprite2;
 
         public GameManager()
         {
-            _video = Video.SetVideoMode(320, 240, 32, false, false, false, true);
-            _spriteCollection = new SpriteCollection();
+            _video = Video.SetVideoMode(800, 600, 32, false, false, false, true);
+            _gameObjectSprite1 = new GameObjectSprite(new Battlecruiser());
+            _gameObjectSprite2 = new GameObjectSprite(new Frigate());
         }
 
         public void Initialize()
         {
             Events.Quit += (sender, args) => Events.QuitApplication();
-            _spriteCollection.Add(new GameObjectSprite(new Battlecruiser()));
-
+            Events.Fps = 60;
             
-            _video.Fill(Color.Blue);
-            _video.Blit(_spriteCollection);
-            
-            _video.Update();
+            Events.Tick += EventsOnTick;
             Events.Run();
+        }
+
+
+        private void EventsOnTick(object sender, TickEventArgs tickEventArgs)
+        {
+            _video.Fill(Color.Blue);
+            _video.Blit(_gameObjectSprite1, _gameObjectSprite1.Rectangle.Location);
+            _video.Blit(_gameObjectSprite2, _gameObjectSprite2.Rectangle.Location);
+            _video.Update();
         }
 
         public void Dispose()

@@ -1,6 +1,6 @@
 ﻿namespace Boat.GameObject.Vehicule
 {
-    class Frigate : Boat
+    public class Frigate : Boat
     {
         public override GameObjectImage Image
         {

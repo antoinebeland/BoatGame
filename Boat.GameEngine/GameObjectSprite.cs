@@ -10,7 +10,7 @@ namespace Boat.GameEngine
     internal sealed class GameObjectSprite : Sprite
     {
         public GameObjectSprite(IGameObject gameObject)
-            : base()
+            : base(SurfaceProvider.GetSurface(gameObject), gameObject.Position)
         {
             GameObject = gameObject;
 
@@ -18,6 +18,11 @@ namespace Boat.GameEngine
 
             Events.MouseButtonDown += OnMouseButtonDown;
             Events.KeyboardDown += OnKeyboardDown;
+        }
+
+        public new Rectangle Rectangle
+        {
+            get { return new Rectangle(GameObject.Position, Surface.Rectangle.Size); }
         }
 
         private void OnKeyboardDown(object sender, KeyboardEventArgs e)
@@ -84,6 +89,8 @@ namespace Boat.GameEngine
                     if (GameObject is IMovable)
                     {
                         var movableObject = GameObject as IMovable;
+                        movableObject.Destination = Mouse.MousePosition;
+
                         Console.WriteLine("Object can move!");
 
                     }

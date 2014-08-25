@@ -46,12 +46,14 @@
     <Compile Include="Building\Port.cs" />
     <Compile Include="Building\Shed.cs" />
     <Compile Include="Building\Warehouse.cs" />
+    <Compile Include="GameObjectImage.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="IAttack.cs" />
     <Compile Include="IDestructible.cs" />
     <Compile Include="IGameObject.cs" />
     <Compile Include="IMovable.cs" />
     <Compile Include="ISelectable.cs" />
+    <Compile Include="MovableGameObject.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Vehicule\AircraftCarrier.cs" />
@@ -61,6 +63,16 @@
     <Compile Include="Vehicule\Frigate.cs" />
     <Compile Include="Vehicule\PatrolBoat.cs" />
     <Compile Include="Vehicule\TorpedoBoat.cs" />
+    <Compile Include="Vehicule\Vehicule.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Boat.Utilities\Boat.Utilities.csproj">
+      <Project>{C46FDB7A-B86C-41FF-8444-A3DBCABBC44E}</Project>
+      <Name>Boat.Utilities</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Environment\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -213,3 +213,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+Boat.GameEngine/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Boat.Console/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Boat.Console/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache

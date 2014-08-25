@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace Boat.GameObject
 {
@@ -7,6 +8,7 @@ namespace Boat.GameObject
     {
         public bool IsSelected { get; set; }
         public Player Owner { get; private set; }
+        public Point Position { get; set; }
         public abstract GameObjectImage Image { get; }
     }
 }
