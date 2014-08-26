@@ -216,3 +216,6 @@ pip-log.txt
 Boat.GameEngine/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Boat.Console/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
 Boat.Console/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Boat.Console/obj/x86/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Boat.GameEngine/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+*.cache
