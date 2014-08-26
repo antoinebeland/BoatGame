@@ -2,6 +2,7 @@
 using System.Drawing;
 using Boat.GameObject;
 using SdlDotNet.Core;
+using SdlDotNet.Graphics;
 using SdlDotNet.Graphics.Sprites;
 using SdlDotNet.Input;
 
@@ -9,6 +10,14 @@ namespace Boat.GameEngine
 {
     internal sealed class GameObjectSprite : Sprite
     {
+        private readonly object _surfaceLock = new object();
+
+        public GameObjectSprite(IMovable movableObject)
+            : this((IGameObject) movableObject)
+        {
+            movableObject.OrientationModified += OnOrientationModified;
+        }
+
         public GameObjectSprite(IGameObject gameObject)
             : base(SurfaceProvider.GetSurface(gameObject), gameObject.Position)
         {
@@ -18,6 +27,36 @@ namespace Boat.GameEngine
 
             Events.MouseButtonDown += OnMouseButtonDown;
             Events.KeyboardDown += OnKeyboardDown;
+        }
+
+        private void OnOrientationModified(object sender, EventArgs eventArgs)
+        {
+            var movableObject = GameObject as IMovable;
+            lock (_surfaceLock)
+            {
+                Surface = SurfaceProvider.GetSurface(movableObject);
+
+                if(movableObject.Orientation != 0)
+                    Surface = Surface.CreateRotatedSurface(movableObject.Orientation);
+
+                GC.Collect();
+            }
+        }
+
+        /// <summary>
+        ///     Gets and sets the surface of the sprite.
+        /// </summary>
+        /// <remarks>Threading safe implementation.</remarks>
+        public override Surface Surface
+        {
+            get
+            {
+                lock (_surfaceLock)
+                {
+                    return base.Surface;
+                }
+            }
+            set { base.Surface = value; }
         }
 
         public new Rectangle Rectangle
@@ -59,9 +98,9 @@ namespace Boat.GameEngine
 
         private void OnMousePrimaryButtonDown()
         {
-            if (GameObject is ISelectable)
+            if (IsValidateType<ISelectable>(GameObject))
             {
-                var selectableObject = GameObject as ISelectable;
+                var selectableObject = GetType<ISelectable>(GameObject);
                 if (IsHovered(Mouse.MousePosition))
                 {
 
@@ -96,6 +135,16 @@ namespace Boat.GameEngine
                     }
                 }
             }
+        }
+
+        public bool IsValidateType<T>(IGameObject gameObject) where T : class, IGameObject
+        {
+            return (gameObject is T);
+        }
+
+        public T GetType<T>(IGameObject gameObject) where T : class, IGameObject
+        {
+            return gameObject as T;
         }
 
         private bool IsHovered(Point position)

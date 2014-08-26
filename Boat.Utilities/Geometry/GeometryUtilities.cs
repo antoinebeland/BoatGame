@@ -4,7 +4,7 @@ using System.Drawing;
 namespace Boat.Utilities.Geometry
 {
     /// <summary>
-    ///     Provides some usefull methods for the greometry.
+    ///     Provides some usefull methods for the geometry.
     /// </summary>
     public static class GeometryUtilities
     {

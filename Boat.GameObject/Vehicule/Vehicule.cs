@@ -14,6 +14,7 @@ namespace Boat.GameObject.Vehicule
         private Point _initialPosition;
 
         public uint Speed { get; set; }
+        public int Orientation { get; set; }
 
         public Point Destination
         {
@@ -33,6 +34,7 @@ namespace Boat.GameObject.Vehicule
         }
 
         public bool IsMoving { get; private set; }
+        public event EventHandler OrientationModified;
 
         private void ExecuteMovement()
         {
@@ -41,6 +43,15 @@ namespace Boat.GameObject.Vehicule
 
             double angle = GeometryUtilities.GetAngle(_initialPosition, _finalPosition);
             uint distance = GeometryUtilities.GetDistance(_initialPosition, _finalPosition);
+
+            var lastOrientation = Orientation;
+            Orientation = (-1 * (int)(angle * 180 / Math.PI));
+
+            if (lastOrientation != Orientation)
+            {
+                if (OrientationModified != null)
+                    OrientationModified.BeginInvoke(this, EventArgs.Empty, null, null);
+            }
 
             for (int i = 1; i <= distance; i++)
             {

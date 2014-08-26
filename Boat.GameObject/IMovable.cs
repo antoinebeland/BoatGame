@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace Boat.GameObject
 {
@@ -13,6 +14,11 @@ namespace Boat.GameObject
         uint Speed { get; set; }
 
         /// <summary>
+        ///     Gets or sets the orientation of the game object.
+        /// </summary>
+        int Orientation { get; set; }
+
+        /// <summary>
         ///     Gets or sets the destination position of the game object.
         /// </summary>
         Point Destination { get; set; }
@@ -21,5 +27,10 @@ namespace Boat.GameObject
         ///     Gets a value that indicates whether the game object is moving.
         /// </summary>
         bool IsMoving { get; }
+
+        /// <summary>
+        ///     Occurs when the orientation of the game object is modified.
+        /// </summary>
+        event EventHandler OrientationModified;
     }
 }
